@@ -1,0 +1,14 @@
+@use 'vuetify/styles' with (
+    $body-font-family: false
+);
+@import "default";
+@import "components";
+
+html{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body{
+    font-family: 'Segoe UI', 'Roboto Flex', 'system-ui', sans-serif !important;  
+}

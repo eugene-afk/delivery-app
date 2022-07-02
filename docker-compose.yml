@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  delivery-app-backend:
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    container_name: delivery-app-backend
+    restart: unless-stopped
+    # volumes:
+    #     - ./data/db:/code/server/db
+    #     - ./data/logs:/code/server/logs
+    #     - ./data/media:/code/server/static
+    ports:
+      - 5063:5000
+
+  delivery-app-frontend:
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+      args: 
+        - apiUrl=http://localhost:5063/
+        - mediaUrl=http://localhost:5063/static/
+    container_name: delivery-app-frontend
+    restart: unless-stopped
+    ports:
+      - 8063:3000
